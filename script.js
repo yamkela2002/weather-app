@@ -30,7 +30,7 @@ search.addEventListener('click', () => {
 
             error404.style.display = 'none';
             error404.classList.remove('fadeIn');
-
+            const Outfit = document.querySelector('.weather-box .outfit');
             const image = document.querySelector('.weather-box img');
             const temperature = document.querySelector('.weather-box .temperature');
             const description = document.querySelector('.weather-box .description');
@@ -60,7 +60,27 @@ search.addEventListener('click', () => {
 
                 default:
                     image.src = '';
+
+
+
+
             }
+
+            let C=`${parseInt(json.main.temp)}`
+    
+     
+    
+            if(C<16){
+                Outfit.innerHTML ="Outfit Suggestion: It is cold,wear a jacket" ;
+            }   
+            else if (C<=16 && C<=21){
+                Outfit.innerHTML = "Outfit Suggestion: It is warm,wear a t-shirt and jeans" + "<i class='fas fa-glasses'></i>";
+            }
+            else if (C>21){
+        
+           Outfit.innerHTML = "Outfit Suggestion: Its hot" + "<i class='fas fa-glasses'></i>";
+             }
+            
 
             temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
             description.innerHTML = `${json.weather[0].description}`;
@@ -78,3 +98,7 @@ search.addEventListener('click', () => {
 
 
 });
+
+
+
+   
